@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+cohere
+langchain
+langchain-community
+chromadb
+sentence-transformers
+transformers
+nltk
+spacy
+pdfplumber
+PyPDF2
+python-docx
+pandas
+python-dotenv
