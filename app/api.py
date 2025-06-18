@@ -20,7 +20,7 @@ load_dotenv()
 # Get key from environment
 api_key = os.getenv("COHERE_API_KEY")
 if not api_key:
-    raise ValueError("❌ COHERE_API_KEY environment variable not found!")
+    raise ValueError(" COHERE_API_KEY environment variable not found!")
 
 # Initialize Cohere
 llm = cohere.Cohere(cohere_api_key=api_key, temperature=0.1)
@@ -32,7 +32,7 @@ app = FastAPI(title="RAG-powered Chatbot (Cohere)")
 class QueryRequest(BaseModel):
     question: str
 
-# 🧠 Function to call Cohere using your exact style
+#  Function to call Cohere using your exact style
 def call_cohere(prompt_text: str) -> str:
     response = llm.generate(
         prompts=[prompt_text],
@@ -41,20 +41,20 @@ def call_cohere(prompt_text: str) -> str:
     )
     return response #.generations[0].strip()
 
-# 🔄 Document preprocessing + embedding
-print("🔍 Extracting documents and initializing vector store...")
+#  Document preprocessing + embedding
+print(" Extracting documents and initializing vector store...")
 
 raw_docs, doc_meta = extract_documents()
 if not raw_docs:
-    raise ValueError("❌ No documents found in the input folder.")
+    raise ValueError(" No documents found in the input folder.")
 
 preprocessed_docs = {doc_id: preprocess_text(text) for doc_id, text in raw_docs.items()}
 embeddings, embedding_meta = chunk_and_embed(preprocessed_docs)
 _, chroma_collection = store_in_chromadb(embeddings, embedding_meta)
 
-print("✅ Vector database initialized with embedded content.")
+print(" Vector database initialized with embedded content.")
 
-# 🔗 Endpoint: Ask
+#  Endpoint: Ask
 @app.post("/ask")
 def ask_question(payload: QueryRequest):
     try:

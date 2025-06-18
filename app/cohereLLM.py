@@ -3,9 +3,9 @@ import os
 from langchain.llms import cohere
 
 # Load your Cohere API key from environment variable
-api_key = "cHpZ6GpjYJJEmrlNq2YgTPvrLKaBmwxU1fvxTp7x"
+api_key = "your_cohere_api_key_here"  # Replace with your actual API key or load from env
 if not api_key:
-    raise ValueError("❌ COHERE_API_KEY environment variable not found!")
+    raise ValueError(" COHERE_API_KEY environment variable not found!")
 
 # Initialize Cohere client
 #llm = cohere.Cohere(api_key)
@@ -18,12 +18,12 @@ prompt_text = "Explain the difference between artificial intelligence and machin
 # Generate response
 response = llm.generate(
     #model="command-light",  # or use "command", "command-light"
-    prompts=[prompt_text],   # 👈 prompts expects a list
+    prompts=[prompt_text],   #  prompts expects a list
     max_tokens=300,
     temperature=0.5
 )
 
 # Print result
-print("\n🧠 Cohere Response:")
+print("\n Cohere Response:")
 #print(response.generations[0].text.strip())
 print(response)

@@ -4,7 +4,7 @@ import chromadb
 from chromadb.config import Settings
 
 def store_in_chromadb(embeddings, metadata, collection_name="documents"):
-    # ✅ Use new Client initialization (no Settings required for default local usage)
+    #  Use new Client initialization (no Settings required for default local usage)
     client = chromadb.PersistentClient(path=".chromadb")  # <- NEW way
 
     if collection_name in [col.name for col in client.list_collections()]:

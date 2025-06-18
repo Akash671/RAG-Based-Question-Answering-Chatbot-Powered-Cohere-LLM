@@ -50,7 +50,7 @@ def extract_documents():
             elif ext == "csv":
                 text = extract_text_from_csv(file_path)
         except Exception as e:
-            print(f"⚠️ Failed to extract from {filename}: {e}")
+            print(f" Failed to extract from {filename}: {e}")
             continue
 
         uid = "doc_" + str(uuid.uuid4())[:8]
